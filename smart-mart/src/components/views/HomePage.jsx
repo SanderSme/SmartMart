@@ -4,6 +4,7 @@ import { fetchProducts } from "../../store/modules/productsSlice"
 import Discount from "../Discount"
 import fullStar from '../../assets/fullStar.svg'
 import emptyStar from '../../assets/emptyStar.svg'
+import { Link } from "react-router-dom"
 
 
 const HomePage = () => {
@@ -48,7 +49,9 @@ const HomePage = () => {
                     />
                   ))}
                 </div>
+                <Link to={`/product/${product.id}`}>
                 <button className="w-full bg-[#4682B4] hover:bg-[#223A4E] rounded-lg text-white mt-2 p-1">View product</button>
+                </Link>
               </div>
             </div>  
         </div>
