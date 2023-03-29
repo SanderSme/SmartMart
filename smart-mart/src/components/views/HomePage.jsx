@@ -13,12 +13,12 @@ const HomePage = () => {
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
-    
-    console.log(products);
+
   return (
     <div className="max-w-6xl w-11/12 mx-auto">
       <h1 className="text-3xl p-1 mt-12">Welcome to <span className="font-bold text-[#191970]">S</span>mart<span className="font-bold text-[#191970]">M</span>art!</h1>
       <div className="w-full h-[2px] bg-gray-200"></div>
+      <input type="search" name="search" id="search" className="mx-auto flex w-1/3 border border-[#879DA9] rounded-md mt-4 p-1 text-sm" placeholder="Search for title or categories"/>
       <div className="flex flex-col sm:flex-row flex-wrap gap-[44px] mt-12 justify-center">
       {products.map((product) => (
         <div key={product.id} className="flex sm:flex-col">

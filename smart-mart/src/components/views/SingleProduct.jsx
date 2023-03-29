@@ -3,9 +3,8 @@ import { useParams } from "react-router-dom"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Discount from "../Discount";
-import fullStar from '../../assets/fullStar.svg'
-import emptyStar from '../../assets/emptyStar.svg'
 import StarRating from "../StarRating";
+import { addItemToCart } from "../../store/modules/cartSlice";
 
 
 const SingleProduct = () => {
@@ -18,18 +17,7 @@ const SingleProduct = () => {
           dispatch(fetchSingleProduct(id))
         }
       }, [dispatch, id])
-      const ratingArray = [...Array(5)]
-    console.log(singleProduct);
-    // function scrollToReviews() {
-    //   const reviewsSection = document.getElementById("reviews");
-    //   if (reviewsSection.scrollIntoView) {
-    //     reviewsSection.scrollIntoView({ behavior: "smooth" });
-    //     console.log(reviewsSection);
-    //   } else {
-    //     window.scrollTo(0, reviewsSection.offsetTop);
-    //   }
-    // }
-    // scrollToReviews()
+
     return (
       <div> 
         {singleProduct && 
@@ -58,26 +46,21 @@ const SingleProduct = () => {
                 </ul>
               </div>
               <div className="flex justify-center md:justify-start mt-4 md:mt-0">
-                <button className="w-[300px] bg-[#4682B4] hover:bg-[#223A4E] rounded-lg text-white p-1 text-xs sm:text-base">Add to cart</button>
+                <button type="submit" onClick={() => dispatch(addItemToCart(singleProduct))} className="w-[300px] bg-[#4682B4] hover:bg-[#223A4E] rounded-lg text-white p-1 text-xs sm:text-base">Add to cart</button>
               </div>
             </div>
           </div>
           <div className="w-full h-fit bg-white mt-12 rounded-lg p-4" id="reviews">
             <h2 className="text-xl font-semibold">Costomer reviews</h2>
             <div className="flex flex-col md:flex-row w-full">
-              <div className="w-full h-44"></div>
+              <div className="w-full h-44">
+              </div>
               <div className="w-full">
                 {singleProduct.reviews.length ? singleProduct.reviews.map((review) => (
                   <div key={review.id}>
                     <p className="text-lg font-medium">{review.username}</p>
                     <div className="flex gap-2 my-3">
-                      {review.rating && ratingArray.map((_, index) => (
-                      <img
-                      key={index}
-                      src={index < review.rating ? `${fullStar}` : `${emptyStar}`}
-                      className="w-3 sm:w-5"
-                      />
-                      ))}
+                      <StarRating rating = {review.rating}/>
                     </div>
                     <p>{review.description}</p>
                     <div className="w-full h-[1px] bg-gray-200 my-4"></div>
