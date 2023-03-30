@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removeItemFromCart } from '../../store/modules/cartSlice'
+import { clearCart } from '../../store/modules/cartSlice'
 
 const ShoppingCart = () => {
     const {itemsInCart} = useSelector(state => state.cart)
@@ -14,8 +15,11 @@ const ShoppingCart = () => {
             totalPrice += item.price
         }
     })
+    const handleCheckout = () => {
+        dispatch(clearCart())
+    }
   return (
-    <div className="max-w-3xl w-11/12 mx-auto">
+    <div className="max-w-3xl w-11/12 mx-auto h-screen">
         <h1 className="text-xl sm:text-3xl p-1 mt-12">Shopping Cart</h1>
         <div className="w-full h-[2px] bg-gray-200"></div>
         <ul>
@@ -52,7 +56,7 @@ const ShoppingCart = () => {
             <p>Subtotal:</p>
             <p className="font-medium">${Math.round(totalPrice * 100) /100}</p>
         </div>
-        {itemsInCart.length ? <button className="w-full bg-[#4682B4] hover:bg-[#223A4E] rounded-lg text-white mt-4 p-1 text-xs sm:text-base">Checkout</button> : null}
+        {itemsInCart.length ? <Link to={"/success"}><button onClick={handleCheckout} className="w-full bg-[#4682B4] hover:bg-[#223A4E] rounded-lg text-white mt-4 p-1 text-xs sm:text-base">Checkout</button></Link> : null}
         <Link to={"/products"}>
             <button className="w-full bg-[#BCD6EC] hover:bg-[#6C95B7] rounded-lg text-black hover:text-white mt-4 p-1 text-xs sm:text-base">Continue shopping</button>
         </Link>

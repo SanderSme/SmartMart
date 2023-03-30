@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Discount from "../Discount";
 import StarRating from "../StarRating";
 import { addItemToCart } from "../../store/modules/cartSlice";
+import fullStar from '../../assets/fullStar.svg'
+import RatingPercent from "../RatingPercent";
 
 
 const SingleProduct = () => {
@@ -17,7 +19,8 @@ const SingleProduct = () => {
           dispatch(fetchSingleProduct(id))
         }
       }, [dispatch, id])
-
+      console.log(singleProduct);
+      const ratingPercentages = singleProduct ? RatingPercent(singleProduct.reviews) : null;
     return (
       <div> 
         {singleProduct && 
@@ -53,9 +56,45 @@ const SingleProduct = () => {
           <div className="w-full h-fit bg-white mt-12 rounded-lg p-4" id="reviews">
             <h2 className="text-xl font-semibold">Costomer reviews</h2>
             <div className="flex flex-col md:flex-row w-full">
-              <div className="w-full h-44">
+              <div className="w-full h-44 flex flex-col gap-4 mt-4">
+                <div className="flex gap-2">
+                  <div className="flex gap-1">
+                    <p>5</p>
+                    <img src={fullStar} alt="star" className="h-4" />
+                  </div>
+                  <progress value={ratingPercentages[5]} max="100" className="w-full md:w-1/2 [&::-webkit-progress-bar]:rounded [&::-webkit-progress-value]:rounded   [&::-webkit-progress-bar]:bg-gray-300 [&::-webkit-progress-value]:bg-[#879DA9] [&::-moz-progress-bar]:bg-[#879DA9]"></progress>
+                </div>
+                <div className="flex gap-2">
+                  <div className="flex gap-1">
+                    <p>4</p>
+                    <img src={fullStar} alt="star" className="h-4" />
+                  </div>
+                  <progress value={ratingPercentages[4]} max="100" className="w-full md:w-1/2 [&::-webkit-progress-bar]:rounded [&::-webkit-progress-value]:rounded   [&::-webkit-progress-bar]:bg-gray-300 [&::-webkit-progress-value]:bg-[#879DA9] [&::-moz-progress-bar]:bg-[#879DA9]"></progress>
+                </div>
+                <div className="flex gap-2">
+                  <div className="flex gap-1">
+                    <p>3</p>
+                    <img src={fullStar} alt="star" className="h-4" />
+                  </div>
+                  <progress value={ratingPercentages[3]} max="100" className="w-full md:w-1/2 [&::-webkit-progress-bar]:rounded [&::-webkit-progress-value]:rounded   [&::-webkit-progress-bar]:bg-gray-300 [&::-webkit-progress-value]:bg-[#879DA9] [&::-moz-progress-bar]:bg-[#879DA9]"></progress>
+                </div>
+                <div className="flex gap-2">
+                  <div className="flex gap-1">
+                    <p>2</p>
+                    <img src={fullStar} alt="star" className="h-4" />
+                  </div>
+                  <progress value={ratingPercentages[2]} max="100" className="w-full md:w-1/2 [&::-webkit-progress-bar]:rounded [&::-webkit-progress-value]:rounded   [&::-webkit-progress-bar]:bg-gray-300 [&::-webkit-progress-value]:bg-[#879DA9] [&::-moz-progress-bar]:bg-[#879DA9]"></progress>
+                </div>
+                <div className="flex gap-2">
+                  <div className="flex gap-1">
+                    <p>1</p>
+                    <img src={fullStar} alt="star" className="h-4" />
+                  </div>
+                  <progress value={ratingPercentages[1]} max="100" className="w-full md:w-1/2 [&::-webkit-progress-bar]:rounded [&::-webkit-progress-value]:rounded   [&::-webkit-progress-bar]:bg-gray-300 [&::-webkit-progress-value]:bg-[#879DA9] [&::-moz-progress-bar]:bg-[#879DA9]"></progress>
+                </div>
               </div>
-              <div className="w-full">
+              <div className="w-full h-[1px] bg-gray-200 my-4 md:hidden"></div>
+              <div className="w-full mt-8 md:mt-0">
                 {singleProduct.reviews.length ? singleProduct.reviews.map((review) => (
                   <div key={review.id}>
                     <p className="text-lg font-medium">{review.username}</p>

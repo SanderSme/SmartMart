@@ -2,7 +2,7 @@ import ContactForm from "../ContactForm"
 
 const Contact = () => {
   return (
-    <div className="mx-auto max-w-3xl w-11/12 px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-3xl w-11/12 px-4 sm:px-6 lg:px-8 h-screen">
                 <div>
                     <div>
                         <h1 className="text-lg md:text-3xl p-1 mt-12">Lets work together</h1>

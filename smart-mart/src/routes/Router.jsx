@@ -4,6 +4,7 @@ import SingleProduct from '../components/views/SingleProduct';
 import Sale from '../components/views/Sale';
 import ShoppingCart from '../components/views/ShoppingCart';
 import Contact from '../components/views/Contact';
+import CheckoutSuccess from '../components/views/CheckoutSuccess';
 function Router() {
     return( 
         <>
@@ -15,6 +16,7 @@ function Router() {
                 <Route path="/products/:id" element={<SingleProduct/>}/>
                 <Route path="/cart" element={<ShoppingCart/>}/>
                 <Route path="/contact" element={<Contact/>}/>
+                <Route path="/success" element={<CheckoutSuccess/>}/>
             </Routes>
         </>
     );
