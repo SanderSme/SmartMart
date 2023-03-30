@@ -15,7 +15,7 @@ const CheckoutSuccess = () => {
           <p> Have a great day!  </p>
           <div className="py-10 text-center">
           <Link to={"/products"}>
-            <button className="w-1/2 bg-[#BCD6EC] hover:bg-[#6C95B7] rounded-lg text-black hover:text-white mt-4 p-1 text-xs sm:text-base">Back to homepage</button>
+            <button className="w-1/2 bg-[#BCD6EC] hover:bg-[#6C95B7] rounded-lg text-black hover:text-white mt-4 p-1 text-base">Back to homepage</button>
         </Link>
           </div>
       </div>
