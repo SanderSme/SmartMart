@@ -1,9 +1,11 @@
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "../../store/modules/productsSlice"
 import Discount from "../Discount"
 import { Link } from "react-router-dom"
 import StarRating from "../StarRating"
+import SearchBar from "../SearchBar"
+import SearchResultsList from "../SearchResultsList"
 
 const Sale = () => {
     const dispatch = useDispatch()
@@ -12,12 +14,17 @@ const Sale = () => {
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
+
+    const [results, setResults] = useState([])
     
   return (
     <div className="max-w-6xl w-11/12 mx-auto">
-      <h1 className="text-3xl p-1 mt-12">Explore a Wide Range of Discounted Products!</h1>
+      <h1 className="text-lg md:text-3xl p-1 mt-12">Explore a Wide Range of Discounted Products!</h1>
       <div className="w-full h-[2px] bg-gray-200"></div>
-      <input type="search" name="search" id="search" className="mx-auto flex w-1/3 border border-[#879DA9] rounded-md mt-4 p-1 text-sm" placeholder="Search for title or categories"/>
+      <div className="flex flex-col items-center w-1/3 mx-auto relative">
+        <SearchBar setResults={setResults}/>
+        <SearchResultsList results={results}/>
+      </div>
       <div className="flex flex-col sm:flex-row flex-wrap gap-[44px] mt-12 justify-center">
       {products.map((product) => (
           <>

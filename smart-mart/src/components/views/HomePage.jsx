@@ -1,9 +1,12 @@
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "../../store/modules/productsSlice"
 import Discount from "../Discount"
 import { Link } from "react-router-dom"
 import StarRating from "../StarRating"
+import SearchBar from "../SearchBar"
+import SearchResultsList from "../SearchResultsList"
+
 
 
 const HomePage = () => {
@@ -14,14 +17,19 @@ const HomePage = () => {
         dispatch(fetchProducts())
     }, [dispatch])
 
+    const [results, setResults] = useState([])
+
   return (
     <div className="max-w-6xl w-11/12 mx-auto">
-      <h1 className="text-3xl p-1 mt-12">Welcome to <span className="font-bold text-[#191970]">S</span>mart<span className="font-bold text-[#191970]">M</span>art!</h1>
+      <h1 className="text-xl md:text-3xl p-1 mt-12">Welcome to <span className="font-bold text-[#191970]">S</span>mart<span className="font-bold text-[#191970]">M</span>art!</h1>
       <div className="w-full h-[2px] bg-gray-200"></div>
-      <input type="search" name="search" id="search" className="mx-auto flex w-1/3 border border-[#879DA9] rounded-md mt-4 p-1 text-sm" placeholder="Search for title or categories"/>
+      <div className="flex flex-col items-center w-full md:w-2/3 xl:w-1/3 mx-auto relative">
+        <SearchBar setResults={setResults}/>
+        <SearchResultsList results={results}/>
+      </div>
       <div className="flex flex-col sm:flex-row flex-wrap gap-[44px] mt-12 justify-center">
       {products.map((product) => (
-        <div key={product.id} className="flex sm:flex-col">
+        <div key={product.id} className="flex sm:flex-col justify-center">
             <div className="w-[170px] sm:w-[255px] h-[180px] sm:h-[284px] relative">
               {product.discountedPrice < product.price ? <div className="h-[50px] w-[50px] sm:h-[70px] sm:w-[70px] rounded-full bg-[#B4464D] left-[-10px] sm:left-[-20px] top-[-20px] absolute flex items-center justify-center"><p className="text-white text-sm sm:text-lg">-{Discount(product.discountedPrice, product.price)}%</p></div> : null}
               <img src={product.imageUrl} className=" w-full h-full object-cover rounded-l-lg sm:rounded-t-lg"/>
