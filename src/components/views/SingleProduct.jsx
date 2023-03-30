@@ -49,7 +49,7 @@ const SingleProduct = () => {
                 </ul>
               </div>
               <div className="flex justify-center md:justify-start mt-4 md:mt-0">
-                <button type="submit" onClick={() => dispatch(addItemToCart(singleProduct))} className="w-[300px] bg-[#4682B4] hover:bg-[#223A4E] rounded-lg text-white p-1 text-xs sm:text-base">Add to cart</button>
+                <button type="submit" onClick={() => dispatch(addItemToCart(singleProduct))} className="w-[300px] bg-[#4682B4] hover:bg-[#223A4E] rounded-lg text-white p-1 text-base">Add to cart</button>
               </div>
             </div>
           </div>

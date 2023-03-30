@@ -56,9 +56,9 @@ const ShoppingCart = () => {
             <p>Subtotal:</p>
             <p className="font-medium">${Math.round(totalPrice * 100) /100}</p>
         </div>
-        {itemsInCart.length ? <Link to={"/success"}><button onClick={handleCheckout} className="w-full bg-[#4682B4] hover:bg-[#223A4E] rounded-lg text-white mt-4 p-1 text-xs sm:text-base">Checkout</button></Link> : null}
+        {itemsInCart.length ? <Link to={"/success"}><button onClick={handleCheckout} className="w-full bg-[#4682B4] hover:bg-[#223A4E] rounded-lg text-white mt-4 p-1 text-base">Checkout</button></Link> : null}
         <Link to={"/products"}>
-            <button className="w-full bg-[#BCD6EC] hover:bg-[#6C95B7] rounded-lg text-black hover:text-white mt-4 p-1 text-xs sm:text-base">Continue shopping</button>
+            <button className="w-full bg-[#BCD6EC] hover:bg-[#6C95B7] rounded-lg text-black hover:text-white mt-4 p-1 text-base">Continue shopping</button>
         </Link>
     </div>
   )
