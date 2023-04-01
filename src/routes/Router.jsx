@@ -5,6 +5,7 @@ import Sale from '../components/views/Sale';
 import ShoppingCart from '../components/views/ShoppingCart';
 import Contact from '../components/views/Contact';
 import CheckoutSuccess from '../components/views/CheckoutSuccess';
+import PageNotFound from '../components/views/PageNotFound';
 function Router() {
     return( 
         <>
@@ -17,6 +18,7 @@ function Router() {
                 <Route path="/cart" element={<ShoppingCart/>}/>
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/success" element={<CheckoutSuccess/>}/>
+                <Route path="*" element={<PageNotFound/>}/>
             </Routes>
         </>
     );

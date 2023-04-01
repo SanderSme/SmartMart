@@ -21,14 +21,14 @@ const Sale = () => {
     <div className="max-w-6xl w-11/12 mx-auto">
       <h1 className="text-lg md:text-3xl p-1 mt-12">Explore a Wide Range of Discounted Products!</h1>
       <div className="w-full h-[2px] bg-gray-200"></div>
-      <div className="flex flex-col items-center w-1/3 mx-auto relative">
+      <div className="flex flex-col items-center w-full md:w-2/3 xl:w-1/3 mx-auto relative">
         <SearchBar setResults={setResults}/>
         <SearchResultsList results={results}/>
       </div>
       <div className="flex flex-col sm:flex-row flex-wrap gap-[44px] mt-12 justify-center">
       {products.map((product) => (
           <>
-          {product.discountedPrice < product.price ? <div key={product.id} className="flex sm:flex-col">
+          {product.discountedPrice < product.price ? <div key={product.id} className="flex sm:flex-col justify-center">
           <div className="w-[170px] sm:w-[255px] h-[180px] sm:h-[284px] relative">
             <div className="h-[50px] w-[50px] sm:h-[70px] sm:w-[70px] rounded-full bg-[#B4464D] left-[-10px] sm:left-[-20px] top-[-20px] absolute flex items-center justify-center"><p className="text-white text-sm sm:text-lg">-{Discount(product.discountedPrice, product.price)}%</p></div>
             <img src={product.imageUrl} className=" w-full h-full object-cover rounded-l-lg sm:rounded-t-lg"/>

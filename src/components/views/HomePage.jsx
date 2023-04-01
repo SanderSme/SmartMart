@@ -6,13 +6,15 @@ import { Link } from "react-router-dom"
 import StarRating from "../StarRating"
 import SearchBar from "../SearchBar"
 import SearchResultsList from "../SearchResultsList"
+import Error from "../layout/Error"
 
 
 
 const HomePage = () => {
     const dispatch = useDispatch()
     const {products} = useSelector(state => state.products)
-
+    const {isError} = useSelector(state => state.error);
+    const {errorMessage} = useSelector(state => state.error);
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
@@ -20,8 +22,9 @@ const HomePage = () => {
     const [results, setResults] = useState([])
 
   return (
-    <div className="max-w-6xl w-11/12 mx-auto">
-      <h1 className="text-xl md:text-3xl p-1 mt-12">Welcome to <span className="font-bold text-[#191970]">S</span>mart<span className="font-bold text-[#191970]">M</span>art!</h1>
+    
+    <div className="max-w-6xl w-11/12 mx-auto min-h-screen">
+      {isError ? <>{isError && <Error message={errorMessage}/>}</> :<><h1 className="text-xl md:text-3xl p-1 mt-12">Welcome to <span className="font-bold text-[#191970]">S</span>mart<span className="font-bold text-[#191970]">M</span>art!</h1>
       <div className="w-full h-[2px] bg-gray-200"></div>
       <div className="flex flex-col items-center w-full md:w-2/3 xl:w-1/3 mx-auto relative">
         <SearchBar setResults={setResults}/>
@@ -63,7 +66,8 @@ const HomePage = () => {
             </div>  
         </div>
             ))}
-      </div>
+      </div></>}
+      
     </div>
   )
 }

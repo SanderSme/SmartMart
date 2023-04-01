@@ -1,11 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit"
 import { setLoadingState } from "./loaderSlice"
+import { setError } from "./errorSlice"
 
 const productsSlice = createSlice({
     name: "products",
     initialState: {
         products: [],
-        singleProduct: null
+        singleProduct: null,
     },
     reducers: {
         SET_PRODUCTS: (state, action) => {
@@ -30,7 +31,8 @@ export const fetchProducts = () => async (dispatch) => {
         dispatch(SET_PRODUCTS(data))
         dispatch(setLoadingState(false))
     } catch(e) {
-        return console.error(e)
+        dispatch(setLoadingState(false))
+        dispatch(setError(true, e.message))
     }
 }
 
@@ -43,6 +45,7 @@ export const fetchSingleProduct= (id) => async (dispatch) => {
         dispatch(SET_SINGLE_PRODUCT(data))
         dispatch(setLoadingState(false))
     } catch (e) {
-        console.error(e)
+        dispatch(setLoadingState(false))
+        dispatch(setError(true, e.message))
     }
 }

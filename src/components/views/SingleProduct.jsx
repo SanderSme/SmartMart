@@ -7,6 +7,7 @@ import StarRating from "../StarRating";
 import { addItemToCart } from "../../store/modules/cartSlice";
 import fullStar from '../../assets/fullStar.svg'
 import RatingPercent from "../RatingPercent";
+import Error from "../layout/Error";
 
 
 const SingleProduct = () => {
@@ -14,17 +15,18 @@ const SingleProduct = () => {
     let {id} = useParams()
     const dispatch = useDispatch()
     const {singleProduct} = useSelector(state => state.products);
+    const {isError} = useSelector(state => state.error);
+    const {errorMessage} = useSelector(state => state.error);
     useEffect(() => {
         if(id){
           dispatch(fetchSingleProduct(id))
         }
       }, [dispatch, id])
-      console.log(singleProduct);
       const ratingPercentages = singleProduct ? RatingPercent(singleProduct.reviews) : null;
     return (
-      <div> 
-        {singleProduct && 
-        <div className="max-w-6xl w-11/12 mx-auto">
+      <div className="min-h-screen max-w-6xl w-11/12 mx-auto"> 
+        {singleProduct && !isError &&
+        <div>
           <div className="mt-12 flex flex-col md:flex-row gap-12">
             <div className="w-full h-[250px] sm:w-[500px] sm:h-[500px] flex items-center">
               <img src={singleProduct.imageUrl} alt={singleProduct.title}  className="h-full w-full object-cover rounded-lg"/>
@@ -109,6 +111,7 @@ const SingleProduct = () => {
             </div>
           </div>
         </div>}
+        {isError && <><Error message={errorMessage}/></>}
       </div>
   )
 }
