@@ -25,7 +25,7 @@ const ContactForm = () => {
 
   return (
     <>
-        <form onSubmit={formik.handleSubmit} className="mt-8">
+        <form onSubmit={formik.handleSubmit} className="mt-8 ">
             <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
                 <div className="sm:col-span-2">
                     <label htmlFor="name"
