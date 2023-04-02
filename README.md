@@ -17,7 +17,9 @@ This project is an online shop that allows users to view products, add products 
 1. Clone the repository
 2. Navigate to the project directory
 3. Install dependencies
+```npm install```
 4. Start the development server
+```npm run dev```
 
 ## Pages
 - Homepage: Displays all products and has a search bar for filtering products.
