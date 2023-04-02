@@ -19,7 +19,7 @@ This project is an online shop that allows users to view products, add products 
 
 ## Installation
 
-1. Clone the repository
+1. Fork the repository
 2. Navigate to the project directory
 3. Install dependencies
    `npm install`
