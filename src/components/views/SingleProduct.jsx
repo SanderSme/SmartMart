@@ -56,7 +56,7 @@ const SingleProduct = () => {
             </div>
           </div>
           <div className="w-full h-fit bg-white mt-12 rounded-lg p-4" id="reviews">
-            <h2 className="text-xl font-semibold">Costomer reviews</h2>
+            <h2 className="text-xl font-semibold">Customer reviews</h2>
             <div className="flex flex-col md:flex-row w-full">
               <div className="w-full h-44 flex flex-col gap-4 mt-4">
                 <div className="flex gap-2">
