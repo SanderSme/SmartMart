@@ -18,7 +18,7 @@ const SearchBar = ({setResults}) => {
         fetchData(value)
     }
   return (
-    <div className="bg-white w-full rounded md:p-2 mx-auto mt-2 flex items-center shadow-md">
+    <div className="bg-white w-full rounded p-1 md:p-2 mx-auto mt-2 flex items-center shadow-md">
         <FontAwesomeIcon icon={faMagnifyingGlass} className="text-[#191970]"/>
         <input type="text" name="search" id="search" value={input} onChange={(e) => handleChange(e.target.value)} className="w-full h-full ml-2 border-none outline-none" placeholder="Type to search..."/>
     </div>
