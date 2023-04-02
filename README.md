@@ -1,4 +1,4 @@
-![Smart-Mart]("./src/assets/readme-img.png)
+![Smart-Mart](./src/assets/readme-img.png)
 
 # Project Name: Smart Mart
 
